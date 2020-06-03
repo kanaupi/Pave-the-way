@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BreakableBlock
   - Goal
   - Thorns
   - pickaxe
   - ladder
   - turnleft
+  - block
   layers:
   - Default
   - TransparentFX
@@ -24,7 +24,7 @@ TagManager:
   - Thorns
   - pickaxe
   - turnleft
-  - 
+  - ladder
   - 
   - 
   - 
