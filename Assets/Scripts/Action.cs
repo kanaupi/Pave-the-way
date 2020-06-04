@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Action : MonoBehaviour
@@ -9,6 +10,9 @@ public class Action : MonoBehaviour
     public int pickaxeNumber;
     public int ladderNumber;
     public GameObject ladder;
+    public Text pickaxeFigure;
+    public Text ladderFigure;
+
     bool canpickaxe=false;
     bool canladder = false;
 
@@ -49,11 +53,11 @@ public class Action : MonoBehaviour
             }
         }
         
-        if (canpickaxe)
+        if (canpickaxe&& pickaxeNumber > 0)
         {
             Destroy();
         }
-        if (canladder)
+        if (canladder && ladderNumber > 0)
         {
             CreateLadder();
         }
@@ -67,16 +71,20 @@ public class Action : MonoBehaviour
         float maxDistance = 10;
 
         RaycastHit2D hit2 = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
-        if(hit2.collider.tag == "block" && Input.GetMouseButton(0))
+        if(hit2.collider.gameObject != null && Input.GetMouseButton(0))
         {
-            Destroy(hit2.collider.gameObject);
+            if (hit2.collider.tag == "block") {
+                Destroy(hit2.collider.gameObject);
+                pickaxeNumber--;
+                pickaxeFigure.text = "×" + pickaxeNumber.ToString();
+            }
 
         }
         
     }
     public void CreateLadder()
     {
-        Debug.Log("うん");
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float maxDistance = 10;
         RaycastHit2D hit3 = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
@@ -86,9 +94,11 @@ public class Action : MonoBehaviour
             {
                 Vector3 vector = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Instantiate(ladder, new Vector3((int)Math.Round(vector.x), (int)Math.Round(vector.y), 0), Quaternion.identity);
+                ladderNumber--;
+                ladderFigure.text = "×" + ladderNumber.ToString();
             }
-            
-        }
-         
+
+        } 
     }
+    
 }

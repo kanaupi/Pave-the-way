@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -56,9 +57,10 @@ public class Player : MonoBehaviour
             afterCliming = true;
         }
         if (hitInfo.collider == null && afterCliming) { 
-            Debug.Log("うん");
+            
             mu = false;
             mf = true;
+            afterCliming = false;
         }
     }
 
@@ -87,24 +89,41 @@ public class Player : MonoBehaviour
         
 
     }
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
         stay = true;
-        if (coll.gameObject.tag == "turnleft")
+        if (buttonClicked&&coll.gameObject.tag == "turnleft")
         {
             mb = true;
             mf = false;
-        }else if (buttonClicked && coll.gameObject.tag == "block")
+        }else if (buttonClicked&&coll.gameObject.tag == "block")
         {
             mf = true;
             mb = false;
         }
+        else if (buttonClicked&&coll.gameObject.tag == "Thorns")
+        {
+            Retry();
+        }
+        else if (buttonClicked && coll.gameObject.tag == "Goal")
+        {
+            stay = false;
+            Debug.Log("うん");
+        }
+
     }
     private void OnCollisionStay2D(Collision2D coll)
     {
-        stay = true;
-        
+        if (coll.gameObject.tag != "Goal")
+        {
+            stay = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D coll)
     {
