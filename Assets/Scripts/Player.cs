@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public GameObject player;
     public LayerMask ladder;
+    
 
     bool mf=false;
     bool mb = false;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public float speed = 0.5f;
     public int speedup = 1;
     bool buttonClicked = false;
+    public static int yourscore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
     {
         mf = true;
         buttonClicked = true;
+        speedup = 1;
         
     }
     public void SpeedUpButton()
@@ -114,7 +117,18 @@ public class Player : MonoBehaviour
         else if (buttonClicked && coll.gameObject.tag == "Goal")
         {
             stay = false;
-            Debug.Log("うん");
+            if (SceneManager.GetActiveScene().name == "stage1-1")
+            {
+                yourscore = 1;
+                Debug.Log(yourscore);
+            }
+            else if (SceneManager.GetActiveScene().name == "stage1-2")
+            {
+                yourscore = 2;
+            }
+            Sleep();
+            
+            SceneManager.LoadScene("StageSelect");
         }
 
     }
@@ -132,5 +146,14 @@ public class Player : MonoBehaviour
             stay = false;
         }
     }
-    
+    IEnumerator Sleep()
+    {
+        yield return new WaitForSeconds(3);  //3秒待つ
+        
+    }
+    public int Getscore()
+    {
+        return yourscore;
+    }
+
 }
