@@ -82,13 +82,6 @@ public class Player : MonoBehaviour
             if (firstclime)
             {
                 mu = true;
-                if (!iscalledonce)
-                {
-                    Debug.Log(1);
-                    oldmb = mb;
-                    oldmf = mf;
-                    iscalledonce = true;
-                }
                 stay = false;
                 afterCliming = true;
             }
@@ -153,9 +146,8 @@ public class Player : MonoBehaviour
         stay = true;
         firstclime = true;
         iscalledonce = false;
-        if (buttonClicked && coll.gameObject.tag == "block")
+        if (buttonClicked && (coll.gameObject.tag == "block" || coll.gameObject.tag == "sand"))
         {
-            
             if ((int)Math.Round(transform.position.y)==coll.transform.position.y)
             {
                 mf = !oldmf;
@@ -170,6 +162,7 @@ public class Player : MonoBehaviour
             }
             
         }
+        
         else if (buttonClicked&&coll.gameObject.tag == "Thorns")
         {
             MainSpriteRenderer.sprite = gameover;
@@ -187,6 +180,18 @@ public class Player : MonoBehaviour
             else if (SceneManager.GetActiveScene().name == "stage1-2")
             {
                 yourscore = 2;
+            }
+            else if (SceneManager.GetActiveScene().name == "stage1-3")
+            {
+                yourscore = 3;
+            }
+            else if (SceneManager.GetActiveScene().name == "stage1-4")
+            {
+                yourscore = 4;
+            }
+            else if (SceneManager.GetActiveScene().name == "stage1-5")
+            {
+                yourscore = 5;
             }
             Sleep();
             
@@ -211,6 +216,13 @@ public class Player : MonoBehaviour
         mf = oldmf;
         mb = oldmb;
         stay = false;
+        if (buttonClicked && coll.gameObject.tag == "sand")
+        {
+            if ((int)Math.Round(transform.position.y)>coll.transform.position.y)
+            {
+                Destroy(coll.gameObject);
+            }
+        }
     }
     
     IEnumerator Sleep()

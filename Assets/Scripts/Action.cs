@@ -10,18 +10,23 @@ public class Action : MonoBehaviour
     public int pickaxeNumber;
     public int ladderNumber;
     public int blockNumber;
+    public int sandNumber;
     public GameObject ladder;
     public GameObject createdladder;
     public GameObject block;
     public GameObject createdblock;
     public GameObject pickaxe;
+    public GameObject sand;
+    public GameObject createdsand;
     public Text pickaxeFigure;
     public Text ladderFigure;
     public Text blockFigure;
+    public Text sandFigure;
 
     bool canpickaxe=false;
     bool canladder = false;
     bool canblock=false;
+    bool cansand = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +43,15 @@ public class Action : MonoBehaviour
         {
             ladderFigure.gameObject.SetActive(false);
         }
+        if (sandNumber == 0)
+        {
+            sandFigure.gameObject.SetActive(false);
+        }
+
         pickaxeFigure.text = "×" + pickaxeNumber.ToString();
         ladderFigure.text = "×" + ladderNumber.ToString();
         blockFigure.text = "×" + blockNumber.ToString();
+        sandFigure.text = "×" + sandNumber.ToString();
     }
 
     // Update is called once per frame
@@ -62,6 +73,7 @@ public class Action : MonoBehaviour
                     canpickaxe = true;
                     canladder = false;
                     canblock = false;
+                    cansand = false;
                 }
             }
             else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject ==ladder)
@@ -72,6 +84,7 @@ public class Action : MonoBehaviour
                     canpickaxe = false;
                     canladder = true;
                     canblock = false;
+                    cansand = false;
                 }
             }
             else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == block)
@@ -82,6 +95,18 @@ public class Action : MonoBehaviour
                     canpickaxe = false;
                     canladder = false;
                     canblock = true;
+                    cansand = false;
+                }
+            }
+            else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == sand)
+            {
+                if (canpickaxe == false && sandNumber != 0)
+                {
+                    hit.collider.GetComponent<Renderer>().material.color = Color.black;
+                    canpickaxe = false;
+                    canladder = false;
+                    canblock = false;
+                    cansand = true;
                 }
             }
 
@@ -98,6 +123,10 @@ public class Action : MonoBehaviour
         if (canblock && blockNumber > 0)
         {
             CreateBlock();
+        }
+        if (cansand && sandNumber > 0)
+        {
+            CreateSand();
         }
     }
 
@@ -158,6 +187,26 @@ public class Action : MonoBehaviour
                 blockFigure.text = "×" + blockNumber.ToString();
                 block.GetComponent<Renderer>().material.color = Color.white;
                 canblock = false;
+            }
+
+        }
+    }
+    public void CreateSand()
+    {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float maxDistance = 10;
+        RaycastHit2D hit4 = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
+        if (hit4.collider == null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 vector = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(createdsand, new Vector3((int)Math.Round(vector.x), (int)Math.Round(vector.y), 0), Quaternion.identity);
+                sandNumber--;
+                sandFigure.text = "×" + sandNumber.ToString();
+                sand.GetComponent<Renderer>().material.color = Color.white;
+                cansand = false;
             }
 
         }

@@ -40,4 +40,19 @@ public class SceneManagement : MonoBehaviour
         selectedStage = "1-2";
         StageSelect();
     }
+    public void stage13()
+    {
+        selectedStage = "1-3";
+        StageSelect();
+    }
+    public void stage14()
+    {
+        selectedStage = "1-4";
+        StageSelect();
+    }
+    public void stage15()
+    {
+        selectedStage = "1-5";
+        StageSelect();
+    }
 }
