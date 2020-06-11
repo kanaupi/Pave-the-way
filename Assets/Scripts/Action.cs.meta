@@ -3,7 +3,18 @@ guid: 0f63e8796c5dd4127afbf25ca5085855
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ladder: {instanceID: 0}
+  - createdladder: {fileID: 8384739806447454060, guid: a43ca6f7e04d1460a8cab8a6e85c768a,
+      type: 3}
+  - block: {fileID: 439032540897548147, guid: 24326e4d394ca4c4c9352073b35ba347, type: 3}
+  - createdblock: {fileID: 439032540897548147, guid: 24326e4d394ca4c4c9352073b35ba347,
+      type: 3}
+  - pickaxe: {fileID: 6684808709564597190, guid: e9a5eed2d603642aea1e1d0e411aa169,
+      type: 3}
+  - pickaxeFigure: {instanceID: 0}
+  - ladderFigure: {instanceID: 0}
+  - blockFigure: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

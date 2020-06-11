@@ -54,7 +54,7 @@ public class Action : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
         if (hit.collider != null)
         {
-            if (Input.GetMouseButton(0) && hit.collider.tag == "pickaxe")
+            if (Input.GetMouseButton(0) && hit.collider.gameObject == pickaxe)
             {
                 if (pickaxeNumber != 0)
                 {
@@ -64,7 +64,7 @@ public class Action : MonoBehaviour
                     canblock = false;
                 }
             }
-            else if (Input.GetMouseButtonDown(0) && hit.collider.tag == "ladder")
+            else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject ==ladder)
             {
                 if (ladderNumber != 0)
                 {
@@ -74,7 +74,7 @@ public class Action : MonoBehaviour
                     canblock = false;
                 }
             }
-            else if (Input.GetMouseButtonDown(0) && hit.collider.tag == "block")
+            else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == block)
             {
                 if (canpickaxe==false&&blockNumber != 0)
                 {

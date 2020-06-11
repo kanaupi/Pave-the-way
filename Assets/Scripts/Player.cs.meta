@@ -3,7 +3,21 @@ guid: d543456d2c30f4b2ca80ff2b78fbe8fe
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - sleep: {fileID: -2311659948842064771, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
+  - gameover: {fileID: 7364682651488144517, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
+  - clime: {fileID: -6287787046888575383, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
+  - stand: {fileID: -1182821291677670348, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
+  - right: {fileID: -4709456396536258026, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
+  - left: {fileID: -4529042392078601758, guid: 4042eda0cf69a4fc29989b4535d53282, type: 3}
+  - smile: {fileID: -7446026091647042388, guid: 4042eda0cf69a4fc29989b4535d53282,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -50,6 +50,15 @@ TagManager:
   - name: Sceneplayer
     uniqueID: 3600059143
     locked: 0
+  - name: cloud
+    uniqueID: 1095157515
+    locked: 0
   - name: stage
     uniqueID: 4040735117
+    locked: 0
+  - name: ladder
+    uniqueID: 758464359
+    locked: 0
+  - name: player
+    uniqueID: 3172863347
     locked: 0
