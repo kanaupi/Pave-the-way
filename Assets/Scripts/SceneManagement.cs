@@ -32,27 +32,44 @@ public class SceneManagement : MonoBehaviour
     }
     public void stage11()
     {
-        selectedStage = "1-1";
-        StageSelect();
+        if (yourscore >= 0)
+        {
+            selectedStage = "1-1";
+            StageSelect();
+        }
+        
     }
     public void stage12()
     {
-        selectedStage = "1-2";
-        StageSelect();
+        if (yourscore > 1)
+        {
+            selectedStage = "1-2";
+            StageSelect();
+        }
+        
     }
     public void stage13()
     {
-        selectedStage = "1-3";
-        StageSelect();
+        if (yourscore > 2)
+        {
+            selectedStage = "1-3";
+            StageSelect();
+        }
     }
     public void stage14()
     {
-        selectedStage = "1-4";
-        StageSelect();
+        if (yourscore > 3)
+        {
+            selectedStage = "1-4";
+            StageSelect();
+        }
     }
     public void stage15()
     {
-        selectedStage = "1-5";
-        StageSelect();
+        if (yourscore > 4)
+        {
+            selectedStage = "1-5";
+            StageSelect();
+        }
     }
 }

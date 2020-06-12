@@ -2544,6 +2544,85 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 827125403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &852434752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 852434753}
+  - component: {fileID: 852434755}
+  - component: {fileID: 852434754}
+  m_Layer: 5
+  m_Name: SandFigure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &852434753
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852434752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 946953481}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -320, y: -210}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &852434754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852434752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &852434755
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852434752}
+  m_CullTransparentMesh: 0
 --- !u!1001 &862069553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2940,6 +3019,7 @@ RectTransform:
   - {fileID: 1310058936}
   - {fileID: 157469983}
   - {fileID: 1125438321}
+  - {fileID: 852434753}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4502,6 +4582,7 @@ MonoBehaviour:
   pickaxeNumber: 1
   ladderNumber: 4
   blockNumber: 2
+  sandNumber: 0
   ladder: {fileID: 827125405}
   createdladder: {fileID: 8384739806447454060, guid: a43ca6f7e04d1460a8cab8a6e85c768a,
     type: 3}
@@ -4509,9 +4590,13 @@ MonoBehaviour:
   createdblock: {fileID: 439032540897548147, guid: 24326e4d394ca4c4c9352073b35ba347,
     type: 3}
   pickaxe: {fileID: 205609751}
+  sand: {fileID: 6339851831239395978, guid: f97e9de9cd6af4cbd8a06868cc18cca6, type: 3}
+  createdsand: {fileID: 6339851831239395978, guid: f97e9de9cd6af4cbd8a06868cc18cca6,
+    type: 3}
   pickaxeFigure: {fileID: 596359118}
   ladderFigure: {fileID: 1310058937}
   blockFigure: {fileID: 1125438322}
+  sandFigure: {fileID: 852434754}
 --- !u!1001 &1367971910
 PrefabInstance:
   m_ObjectHideFlags: 0
