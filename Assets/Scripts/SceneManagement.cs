@@ -30,6 +30,7 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene("stage" + selectedStage);
     }
+    
     public void stage11()
     {
         if (yourscore >= 0)
@@ -71,5 +72,9 @@ public class SceneManagement : MonoBehaviour
             selectedStage = "1-5";
             StageSelect();
         }
+    }
+    public void backtitle()
+    {
+        SceneManager.LoadScene("start");
     }
 }
