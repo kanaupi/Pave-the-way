@@ -37,12 +37,16 @@ public class Player : MonoBehaviour
     public Sprite right;
     public Sprite left;
     public Sprite smile;
+
+    public AudioClip death;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -166,6 +170,7 @@ public class Player : MonoBehaviour
         else if (buttonClicked&&coll.gameObject.tag == "Thorns")
         {
             MainSpriteRenderer.sprite = gameover;
+            audioSource.PlayOneShot(death);
             Retry();
         }
         else if (buttonClicked && coll.gameObject.tag == "Goal")

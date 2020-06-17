@@ -28,9 +28,16 @@ public class Action : MonoBehaviour
     bool canblock=false;
     bool cansand = false;
 
+    public AudioClip click;
+    public AudioClip spawn;
+    public AudioClip delete;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (blockNumber == 0)
         {
             blockFigure.gameObject.SetActive(false);
@@ -65,11 +72,11 @@ public class Action : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
         if (hit.collider != null)
         {
-            if (Input.GetMouseButton(0) && hit.collider.gameObject == pickaxe)
+            if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == pickaxe)
             {
                 if (pickaxeNumber != 0)
                 {
-                    hit.collider.GetComponent<Renderer>().material.color = Color.black;
+                    audioSource.PlayOneShot(click);
                     canpickaxe = true;
                     canladder = false;
                     canblock = false;
@@ -80,7 +87,7 @@ public class Action : MonoBehaviour
             {
                 if (ladderNumber != 0)
                 {
-                    hit.collider.GetComponent<Renderer>().material.color = Color.black;
+                    audioSource.PlayOneShot(click);
                     canpickaxe = false;
                     canladder = true;
                     canblock = false;
@@ -89,9 +96,9 @@ public class Action : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == block)
             {
-                if (canpickaxe==false&&blockNumber != 0)
+                if (blockNumber != 0)
                 {
-                    hit.collider.GetComponent<Renderer>().material.color = Color.black;
+                    audioSource.PlayOneShot(click);
                     canpickaxe = false;
                     canladder = false;
                     canblock = true;
@@ -100,10 +107,9 @@ public class Action : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && hit.collider.gameObject == sand)
             {
-                if (canpickaxe == false && sandNumber != 0)
+                if ( sandNumber != 0)
                 {
-                    hit.collider.GetComponent<Renderer>().material.color = Color.black;
-                    canpickaxe = false;
+                    audioSource.PlayOneShot(click);
                     canladder = false;
                     canblock = false;
                     cansand = true;
@@ -114,18 +120,34 @@ public class Action : MonoBehaviour
         
         if (canpickaxe&& pickaxeNumber > 0)
         {
+            pickaxe.GetComponent<Renderer>().material.color = Color.black;
+            ladder.GetComponent<Renderer>().material.color = Color.white;
+            block.GetComponent<Renderer>().material.color = Color.white;
+            sand.GetComponent<Renderer>().material.color = Color.white;
             Destroy();
         }
         if (canladder && ladderNumber > 0)
         {
+            pickaxe.GetComponent<Renderer>().material.color = Color.white;
+            ladder.GetComponent<Renderer>().material.color = Color.black;
+            block.GetComponent<Renderer>().material.color = Color.white;
+            sand.GetComponent<Renderer>().material.color = Color.white;
             CreateLadder();
         }
         if (canblock && blockNumber > 0)
         {
+            pickaxe.GetComponent<Renderer>().material.color = Color.white;
+            ladder.GetComponent<Renderer>().material.color = Color.white;
+            block.GetComponent<Renderer>().material.color = Color.black;
+            sand.GetComponent<Renderer>().material.color = Color.white;
             CreateBlock();
         }
         if (cansand && sandNumber > 0)
         {
+            pickaxe.GetComponent<Renderer>().material.color = Color.white;
+            ladder.GetComponent<Renderer>().material.color = Color.white;
+            block.GetComponent<Renderer>().material.color = Color.white;
+            sand.GetComponent<Renderer>().material.color = Color.black;
             CreateSand();
         }
     }
@@ -140,8 +162,9 @@ public class Action : MonoBehaviour
         RaycastHit2D hit2 = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance);
         if(hit2.collider !=null && Input.GetMouseButton(0))
         {
-            if (hit2.collider.tag == "block") {
+            if (hit2.collider.tag == "block"&&hit2.collider.gameObject!=block.gameObject) {
                 Destroy(hit2.collider.gameObject);
+                audioSource.PlayOneShot(delete);
                 pickaxeNumber--;
                 pickaxeFigure.text = "×" + pickaxeNumber.ToString();
                 pickaxe.GetComponent<Renderer>().material.color = Color.white;
@@ -163,6 +186,7 @@ public class Action : MonoBehaviour
             {
                 Vector3 vector = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Instantiate(createdladder, new Vector3((int)Math.Round(vector.x), (int)Math.Round(vector.y), 0), Quaternion.identity);
+                audioSource.PlayOneShot(spawn);
                 ladderNumber--;
                 ladderFigure.text = "×" + ladderNumber.ToString();
                 ladder.GetComponent<Renderer>().material.color = Color.white;
@@ -183,6 +207,7 @@ public class Action : MonoBehaviour
             {
                 Vector3 vector = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Instantiate(createdblock, new Vector3((int)Math.Round(vector.x), (int)Math.Round(vector.y), 0), Quaternion.identity);
+                audioSource.PlayOneShot(spawn);
                 blockNumber--;
                 blockFigure.text = "×" + blockNumber.ToString();
                 block.GetComponent<Renderer>().material.color = Color.white;
@@ -203,6 +228,7 @@ public class Action : MonoBehaviour
             {
                 Vector3 vector = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Instantiate(createdsand, new Vector3((int)Math.Round(vector.x), (int)Math.Round(vector.y), 0), Quaternion.identity);
+                audioSource.PlayOneShot(spawn);
                 sandNumber--;
                 sandFigure.text = "×" + sandNumber.ToString();
                 sand.GetComponent<Renderer>().material.color = Color.white;

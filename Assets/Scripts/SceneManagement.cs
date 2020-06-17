@@ -11,10 +11,14 @@ public class SceneManagement : MonoBehaviour
     public GameObject Sceneplayer;
     public Player script;
     public int yourscore=0;
+
+    public AudioClip click;
+    public AudioClip cancel;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void StageSelect()
     {
+        audioSource.PlayOneShot(click);
         SceneManager.LoadScene("stage" + selectedStage);
     }
     
@@ -42,7 +47,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void stage12()
     {
-        if (yourscore > 1)
+        if (yourscore >= 1)
         {
             selectedStage = "1-2";
             StageSelect();
@@ -51,7 +56,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void stage13()
     {
-        if (yourscore > 2)
+        if (yourscore >= 2)
         {
             selectedStage = "1-3";
             StageSelect();
@@ -59,7 +64,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void stage14()
     {
-        if (yourscore > 3)
+        if (yourscore >= 3)
         {
             selectedStage = "1-4";
             StageSelect();
@@ -67,7 +72,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void stage15()
     {
-        if (yourscore > 4)
+        if (yourscore >= 4)
         {
             selectedStage = "1-5";
             StageSelect();
@@ -75,6 +80,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void backtitle()
     {
+        audioSource.PlayOneShot(cancel);
         SceneManager.LoadScene("start");
     }
 }

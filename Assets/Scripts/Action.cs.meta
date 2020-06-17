@@ -12,9 +12,15 @@ MonoImporter:
       type: 3}
   - pickaxe: {fileID: 6684808709564597190, guid: e9a5eed2d603642aea1e1d0e411aa169,
       type: 3}
+  - sand: {instanceID: 0}
+  - createdsand: {instanceID: 0}
   - pickaxeFigure: {instanceID: 0}
   - ladderFigure: {instanceID: 0}
   - blockFigure: {instanceID: 0}
+  - sandFigure: {instanceID: 0}
+  - click: {fileID: 8300000, guid: 67d3c459cff614603a945125caad21ca, type: 3}
+  - spawn: {fileID: 8300000, guid: cb2ff3e47d83e4743a216e4d85d6028a, type: 3}
+  - delete: {fileID: 8300000, guid: 78e510c58a091414f923214fc842c96f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
