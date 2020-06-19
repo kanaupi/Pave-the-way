@@ -88,6 +88,7 @@ public class Action : MonoBehaviour
                 if (ladderNumber != 0)
                 {
                     audioSource.PlayOneShot(click);
+                    
                     canpickaxe = false;
                     canladder = true;
                     canblock = false;

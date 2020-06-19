@@ -25,7 +25,7 @@ public class SceneManagement : MonoBehaviour
     void Update()
     {
         yourscore = script.Getscore();
-        if (yourscore != 0)
+        if (yourscore != 0&&yourscore!=5)
         {
             Sceneplayer.transform.position = new Vector3(-9 + yourscore * 4.5f, -3, 0);
         }
